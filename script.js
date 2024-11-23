@@ -49,6 +49,18 @@ function generateDiscountCode() {
     document.getElementById("discountCode").textContent = "SENIOR20";
 }
 
+// Switch between tabs
+function openTab(evt, tabName) {
+    const tabcontents = document.querySelectorAll(".tabcontent");
+    tabcontents.forEach(content => content.style.display = "none");
+
+    const tablinks = document.querySelectorAll(".tablinks");
+    tablinks.forEach(link => link.classList.remove("active"));
+
+    document.getElementById(tabName).style.display = "block";
+    evt.currentTarget.classList.add("active");
+}
+
 // Event listener for the password check button
 document.getElementById("checkPasswordBtn").addEventListener("click", function () {
     const password = document.getElementById("password").value;
@@ -79,6 +91,23 @@ document.getElementById("checkPasswordBtn").addEventListener("click", function (
     }
 });
 
+// Event listener for the redeem button
+document.querySelectorAll('.redeemBtn').forEach(button => {
+    button.addEventListener('click', function() {
+        const pointsRequired = parseInt(this.getAttribute('data-points'));
+        let currentPoints = parseInt(localStorage.getItem("totalPoints") || "0");
+
+        if (currentPoints >= pointsRequired) {
+            currentPoints -= pointsRequired;
+            localStorage.setItem("totalPoints", currentPoints);
+            document.getElementById("shopPoints").textContent = currentPoints;
+            alert(`You have redeemed the discount code: ${this.previousElementSibling.textContent}`);
+        } else {
+            alert("You don't have enough points for this discount code.");
+        }
+    });
+});
+
 // Initialize the page
 function initializePage() {
     const attemptsLeft = checkAttempts();
@@ -86,6 +115,7 @@ function initializePage() {
 
     const totalPoints = localStorage.getItem("totalPoints") || 0;
     document.getElementById("points").textContent = totalPoints;
+    document.getElementById("shopPoints").textContent = totalPoints;
 
     if (attemptsLeft <= 0) {
         document.getElementById("checkPasswordBtn").disabled = true;
@@ -97,4 +127,8 @@ function initializePage() {
 }
 
 // Call initializePage when the page loads
-window.onload = initializePage;
+window.onload = function() {
+    initializePage();
+    document.getElementById("checkerTabBtn").click(); // Open Password Checker tab by default
+};
+
