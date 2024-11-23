@@ -4,10 +4,11 @@
     padding: 0;
     box-sizing: border-box;
 }
+
 /* Global Styles */
 body {
     font-family: 'Roboto', sans-serif;
-    background-color: #1c1e26;
+    background-color: #2e3440;
     color: #f1f1f1;
     display: flex;
     justify-content: center;
@@ -18,12 +19,15 @@ body {
 
 /* Container */
 .container {
-    background-color: #2e3440;
+    background-color: #3b4252;
     border-radius: 10px;
     padding: 40px;
     width: 100%;
-    max-width: 450px;
+    max-width: 600px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 /* Header */
@@ -35,15 +39,45 @@ body {
 .header h1 {
     font-size: 28px;
     margin-bottom: 10px;
-    color: #81a1c1;
+    color: #88c0d0;
 }
 
 .header p {
     font-size: 16px;
-    color: #aab4c0;
+    color: #d8dee9;
 }
 
-/* Password Checker */
+/* Tab Navigation */
+.tabs {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.tablinks {
+    background-color: #4c566a;
+    color: white;
+    border: 1px solid #3b4252;
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    border-radius: 5px;
+}
+
+.tablinks:hover {
+    background-color: #81a1c1;
+}
+
+.tabcontent {
+    display: none;
+}
+
+/* Active tab */
+.tablinks.active {
+    background-color: #81a1c1;
+    color: #2e3440;
+}
+
 .password-checker {
     text-align: center;
     margin-bottom: 20px;
@@ -75,7 +109,6 @@ body {
     background-color: #4c66a1;
 }
 
-/* Password Strength Message */
 .strength-message {
     font-size: 18px;
     margin-top: 20px;
@@ -89,7 +122,7 @@ body {
 
 /* Tips Section */
 .tips {
-    background-color: #3b4252;
+    background-color: #4c566a;
     border-radius: 5px;
     padding: 15px;
     margin-top: 20px;
@@ -111,6 +144,40 @@ body {
     margin-bottom: 8px;
 }
 
+/* Shop Section */
+.shop-section {
+    text-align: center;
+}
+
+.shop-section h2 {
+    color: #81a1c1;
+}
+
+.shop-items {
+    margin-top: 20px;
+}
+
+.item {
+    background-color: #4c566a;
+    border-radius: 5px;
+    padding: 15px;
+    margin: 10px 0;
+}
+
+.redeemBtn {
+    padding: 8px 16px;
+    background-color: #81a1c1;
+    border: none;
+    border-radius: 5px;
+    color: #2e3440;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.redeemBtn:hover {
+    background-color: #5e81ac;
+}
+
 /* Discount Code Section */
 #discountCodeSection {
     background-color: #8fbcbb;
@@ -126,3 +193,4 @@ body {
     font-weight: bold;
     color: #2e3440;
 }
+
